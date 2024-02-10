@@ -3,38 +3,38 @@
         <input type="text" placeholder="Bem-vindo!" class="calculator-visor" id="calculator-visor">
 
         <div class="row">
-            <button class="calculator-key" type="button">C</button>
-            <button class="calculator-key" type="button">.</button>
-            <button class="calculator-key" type="button">,</button>
-            <button class="calculator-key" type="button">/</button>
+            <button class="calculator-key" (click)="keyPressed('clear', KEY_TYPES.action)" type="button">C</button>
+            <button class="calculator-key" (click)="keyPressed('.', KEY_TYPES.symbol)" type="button">.</button>
+            <button class="calculator-key" (click)="keyPressed(',', KEY_TYPES.symbol)" type="button">,</button>
+            <button class="calculator-key" (click)="keyPressed('/', KEY_TYPES.operation)" type="button">/</button>
         </div>
 
         <div class="row">
-            <button class="calculator-key" type="button">1</button>
-            <button class="calculator-key" type="button">2</button>
-            <button class="calculator-key" type="button">3</button>
-            <button class="calculator-key" type="button">x</button>
+            <button class="calculator-key" (click)="keyPressed('1', KEY_TYPES.numeral)" type="button">1</button>
+            <button class="calculator-key" (click)="keyPressed('2', KEY_TYPES.numeral)" type="button">2</button>
+            <button class="calculator-key" (click)="keyPressed('3', KEY_TYPES.numeral)" type="button">3</button>
+            <button class="calculator-key" (click)="keyPressed('*', KEY_TYPES.operation)" type="button">x</button>
         </div>
 
         <div class="row">
-            <button class="calculator-key" type="button">4</button>
-            <button class="calculator-key" type="button">5</button>
-            <button class="calculator-key" type="button">6</button>
-            <button class="calculator-key" type="button">-</button>
+            <button class="calculator-key" (click)="keyPressed('4', KEY_TYPES.numeral)" type="button">4</button>
+            <button class="calculator-key" (click)="keyPressed('5', KEY_TYPES.numeral)" type="button">5</button>
+            <button class="calculator-key" (click)="keyPressed('6', KEY_TYPES.numeral)" type="button">6</button>
+            <button class="calculator-key" (click)="keyPressed('-', KEY_TYPES.operation)" type="button">-</button>
         </div>
 
         <div class="row">
-            <button class="calculator-key" type="button">7</button>
-            <button class="calculator-key" type="button">8</button>
-            <button class="calculator-key" type="button">9</button>
-            <button class="calculator-key" type="button">+</button>
+            <button class="calculator-key" (click)="keyPressed('7', KEY_TYPES.numeral)" type="button">7</button>
+            <button class="calculator-key" (click)="keyPressed('8', KEY_TYPES.numeral)" type="button">8</button>
+            <button class="calculator-key" (click)="keyPressed('9', KEY_TYPES.numeral)" type="button">9</button>
+            <button class="calculator-key" (click)="keyPressed('+', KEY_TYPES.operation)" type="button">+</button>
         </div>
 
         <div class="row">
-            <button class="calculator-key" type="button">(</button>
-            <button class="calculator-key" type="button">0</button>
-            <button class="calculator-key" type="button">)</button>
-            <button class="calculator-key equal-button" type="button">=</button>
+            <button class="calculator-key" (click)="keyPressed('parenthesis_open', KEY_TYPES.symbol)" type="button">(</button>
+            <button class="calculator-key" (click)="keyPressed('0', KEY_TYPES.numeral)" type="button">0</button>
+            <button class="calculator-key" (click)="keyPressed('parenthesis_close', KEY_TYPES.symbol)" type="button">)</button>
+            <button class="calculator-key equal-button" (click)="keyPressed('=', KEY_TYPES.action)" type="button">=</button>
         </div>
     </div>
 </div>
