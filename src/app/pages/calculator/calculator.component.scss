@@ -54,6 +54,11 @@ button[type=button].calculator-key {
     font-size: min(3rem, 2.5vw);
     font-weight: 400;
 
+    &:active {
+        transition: 0.5s;
+        background-color: rgb(0, 140, 255);
+    }
+
     &.equal-button {
         background-color: rgb(15, 138, 15);
         font-weight: 600;
@@ -61,8 +66,7 @@ button[type=button].calculator-key {
         border-radius: 50%;
     }
 
-    &:active {
-        transition: 0.5s;
-        background-color: rgb(0, 140, 255);
+    &.clear-button {
+        color: #ff4545;
     }
 }
