@@ -12,9 +12,15 @@ div.calculator-content {
     width: min(350px, 80vw);
     display: flex;
     flex-direction: column;
-    background-color: darkgray;
+    background-color: rgb(31, 31, 31);
 
-    padding: 0.5rem;
+    border-right: 20px solid rgb(59, 59, 59);
+    border-bottom: 20px solid rgb(0, 0, 0);
+    border-radius: 15px 15px;
+    
+    box-shadow: 5px 10px 20px rgb(48, 48, 48);
+
+    padding: 1rem;
     row-gap: 0.5rem;
 }
 
