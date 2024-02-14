@@ -49,10 +49,6 @@ button[type=button].calculator-key {
     aspect-ratio: 1 / 1;
     background-color: rgb(148, 148, 148);
     border: none;
-    border-right: 5px solid rgb(59, 59, 59);
-    border-bottom: 5px solid rgb(59, 59, 59);
-    border-radius: 5px;
-
     font-size: min(3rem, 2.5vw);
     font-weight: 400;
 
@@ -62,6 +58,10 @@ button[type=button].calculator-key {
         // border-bottom: 2px solid rgb(59, 59, 59);
         //background-color: rgb(0, 140, 255);
         background-color: rgb(187, 187, 187);
+    }
+
+    &:not(.equal-button) {
+        border-radius: 5px;
     }
 
     &.equal-button {
