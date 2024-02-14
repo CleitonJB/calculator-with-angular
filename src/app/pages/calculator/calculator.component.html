@@ -6,14 +6,15 @@
             <button class="calculator-key" (click)="keyPressed('clear', KEY_TYPES.action)" type="button">C</button>
             <button class="calculator-key" (click)="keyPressed('.', KEY_TYPES.symbol)" type="button">.</button>
             <button class="calculator-key" (click)="keyPressed(',', KEY_TYPES.symbol)" type="button">,</button>
-            <button class="calculator-key" (click)="keyPressed('/', KEY_TYPES.operation)" type="button">/</button>
+            <button class="calculator-key" (click)="keyPressed('÷', KEY_TYPES.operation)" type="button">÷</button>
         </div>
 
         <div class="row">
             <button class="calculator-key" (click)="keyPressed('1', KEY_TYPES.numeral)" type="button">1</button>
             <button class="calculator-key" (click)="keyPressed('2', KEY_TYPES.numeral)" type="button">2</button>
             <button class="calculator-key" (click)="keyPressed('3', KEY_TYPES.numeral)" type="button">3</button>
-            <button class="calculator-key" (click)="keyPressed('*', KEY_TYPES.operation)" type="button">x</button>
+            <!-- <button class="calculator-key" (click)="keyPressed('*', KEY_TYPES.operation)" type="button">x</button> *TESTAR ISSO AQUI -->
+            <button class="calculator-key" (click)="keyPressed('x', KEY_TYPES.operation)" type="button">x</button>
         </div>
 
         <div class="row">
