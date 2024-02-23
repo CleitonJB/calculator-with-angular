@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { KeyTypes } from 'src/app/models/keyTypes';
+import { AllowedKeysMappingType } from 'src/app/models/AllowedKeysMappingType';
 
 @Component({
   selector: 'app-calculator',
@@ -22,7 +23,7 @@ export class CalculatorComponent implements OnInit {
   private handleKeyPressed(value: string, type: KeyTypes): void {
     switch(type) {
       case KeyTypes.action:
-        const allowedActions: any = {
+        const allowedActions: AllowedKeysMappingType = {
           "clear": () => {
             this.clearVisor();
           },
@@ -44,18 +45,18 @@ export class CalculatorComponent implements OnInit {
       break;
 
       case KeyTypes.operation:
-        const allowedOperations: any = {
+        const allowedOperations: AllowedKeysMappingType = {
           "+": () => { return this.setToVisor("+"); },
           "-": () => { return this.setToVisor("-"); },
-          "x": () => { return this.setToVisor("*"); },
-          "÷": () => { return this.setToVisor("/"); }
+          "x": () => { return this.setToVisor("x"); },
+          "÷": () => { return this.setToVisor("÷"); }
         };
 
         allowedOperations[value]();
       break;
 
       case KeyTypes.symbol:
-        const allowedSymbols: any = {
+        const allowedSymbols: AllowedKeysMappingType = {
           ".": () => { return this.setToVisor("."); },
           ",": () => { return this.setToVisor(","); },
           "parenthesis_open": () => { return this.setToVisor("(");},
@@ -66,7 +67,7 @@ export class CalculatorComponent implements OnInit {
       break;
 
       case KeyTypes.numeral:
-        const allowedNumerals: any = {
+        const allowedNumerals: AllowedKeysMappingType = {
           0: () => { return this.setToVisor("0"); },
           1: () => { return this.setToVisor("1"); },
           2: () => { return this.setToVisor("2"); },
