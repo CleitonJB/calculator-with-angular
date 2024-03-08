@@ -9,7 +9,7 @@ import { AllowedKeysMappingType } from 'src/app/models/AllowedKeysMappingType';
   styleUrls: ['./calculator.component.scss']
 })
 export class CalculatorComponent implements OnInit {
-  public KEY_TYPES: typeof KeyTypes = KeyTypes;
+  public readonly KEY_TYPES: typeof KeyTypes = KeyTypes;
 
   constructor() {}
   
