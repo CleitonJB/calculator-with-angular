@@ -24,7 +24,7 @@ export class CalculatorComponent implements OnInit {
     switch(type) {
       case KeyTypes.action:
         const allowedActions: AllowedKeysMappingType = {
-          "clear": {
+          "C": {
             value:   "",
             symbol:  "",
             perform: () => {
