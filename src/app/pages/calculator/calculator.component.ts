@@ -163,6 +163,10 @@ export class CalculatorComponent implements OnInit {
 
         allowedNumerals[value].perform();
       break;
+
+      default:
+        throw(`Ação não permitida!`);
+      break;
     }
   }
 
