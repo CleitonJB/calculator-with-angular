@@ -1,3 +1,8 @@
+// Criar um para cada tipo de tipo de botão????
 export type AllowedKeysMappingType = {
-    [name:string]: () => void;
+    [key:string]: {
+        value: string;
+        symbol: string;
+        perform: () => void;
+    };
 }

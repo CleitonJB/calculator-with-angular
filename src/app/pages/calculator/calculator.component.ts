@@ -24,63 +24,144 @@ export class CalculatorComponent implements OnInit {
     switch(type) {
       case KeyTypes.action:
         const allowedActions: AllowedKeysMappingType = {
-          "clear": () => {
-            this.clearVisor();
-          },
-          "=": () => {
-            //*regras
-            const visorValue: string = this.getVisorElement()!.value;
-
-            if(visorValue.length > 0) {
-              const expressionResult: string = this.calculate();
+          "clear": {
+            value:   "",
+            symbol:  "",
+            perform: () => {
               this.clearVisor();
-              this.setToVisor(expressionResult);
-            } else {
-              this.setToVisor("0");
+            }
+          },
+          "=": {
+            value:   "=",
+            symbol:  "=",
+            perform: () => {
+              //*regras
+              const visorValue: string = this.getVisorElement()!.value;
+  
+              if(visorValue.length > 0) {
+                const expressionResult: string = this.calculate();
+                this.clearVisor();
+                this.setToVisor(expressionResult);
+              } else {
+                this.setToVisor("0");
+              }
             }
           },
         };
 
-        allowedActions[value]();
+        allowedActions[value].perform();
       break;
 
+      //! ADICIONAR FATORIAL
       case KeyTypes.operation:
         const allowedOperations: AllowedKeysMappingType = {
-          "+": () => { return this.setToVisor("+"); },
-          "-": () => { return this.setToVisor("-"); },
-          "x": () => { return this.setToVisor("x"); },
-          "÷": () => { return this.setToVisor("÷"); }
+          "+": {
+            value:   "+",
+            symbol:  "+",
+            perform: () => { return this.setToVisor("+"); }
+          },
+          "-": {
+            value:   "-",
+            symbol:  "-",
+            perform: () => { return this.setToVisor("-"); }
+          },
+          "x": {
+            value:   "x",
+            symbol:  "*",
+            perform: () => { return this.setToVisor("x"); }
+          },
+          "÷": {
+            value:   "÷",
+            symbol:  "/",
+            perform: () => { return this.setToVisor("÷"); }
+          }
         };
 
-        allowedOperations[value]();
+        allowedOperations[value].perform();
       break;
 
       case KeyTypes.symbol:
         const allowedSymbols: AllowedKeysMappingType = {
-          ".": () => { return this.setToVisor("."); },
-          ",": () => { return this.setToVisor(","); },
-          "parenthesis_open": () => { return this.setToVisor("(");},
-          "parenthesis_close": () => { return this.setToVisor(")"); }
+          ".": {
+            value:   ".",
+            symbol:  ".",
+            perform: () => { return this.setToVisor('.'); }
+          },
+          ",": {
+            value:   ",",
+            symbol:  ",",
+            perform: () => { return this.setToVisor(","); }
+          },
+          "parenthesis_open": {
+            value:   "(",
+            symbol:  "(",
+            perform: () => { return this.setToVisor("("); }
+          },
+          "parenthesis_close": {
+            value:   ")",
+            symbol:  ")",
+            perform: () => { return this.setToVisor(")"); }
+          }
         };
 
-        allowedSymbols[value]();
+        allowedSymbols[value].perform();
       break;
 
       case KeyTypes.numeral:
         const allowedNumerals: AllowedKeysMappingType = {
-          0: () => { return this.setToVisor("0"); },
-          1: () => { return this.setToVisor("1"); },
-          2: () => { return this.setToVisor("2"); },
-          3: () => { return this.setToVisor("3"); },
-          4: () => { return this.setToVisor("4"); },
-          5: () => { return this.setToVisor("5"); },
-          6: () => { return this.setToVisor("6"); },
-          7: () => { return this.setToVisor("7"); },
-          8: () => { return this.setToVisor("8"); },
-          9: () => { return this.setToVisor("9"); }
+          0: {
+            value:   "0",
+            symbol:  "0",
+            perform: () => { return this.setToVisor("0"); }
+          },
+          1: {
+            value:   "1",
+            symbol:  "1",
+            perform: () => { return this.setToVisor("1"); }
+          },
+          2: {
+            value:   "2",
+            symbol:  "2",
+            perform: () => { return this.setToVisor("2"); }
+          },
+          3: {
+            value:   "3",
+            symbol:  "3",
+            perform: () => { return this.setToVisor("3"); }
+          },
+          4: {
+            value:   "4",
+            symbol:  "4",
+            perform: () => { return this.setToVisor("4"); }
+          },
+          5: {
+            value:   "5",
+            symbol:  "5",
+            perform: () => { return this.setToVisor("5"); }
+          },
+          6: {
+            value:   "6",
+            symbol:  "6",
+            perform: () => { return this.setToVisor("6"); }
+          },
+          7: {
+            value:   "7",
+            symbol:  "7",
+            perform: () => { return this.setToVisor("7"); }
+          },
+          8: {
+            value:   "8",
+            symbol:  "8",
+            perform: () => { return this.setToVisor("8"); }
+          },
+          9: {
+            value:   "9",
+            symbol:  "9",
+            perform: () => { return this.setToVisor("9"); }
+          }
         };
 
-        allowedNumerals[value]();
+        allowedNumerals[value].perform();
       break;
     }
   }
