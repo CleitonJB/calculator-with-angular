@@ -193,8 +193,8 @@ export class CalculatorComponent implements OnInit {
   private clearVisor(): void {
     this.getVisorElement()!.value = '';
 
-    this.calculatorVisorValues.userValue    += "";
-    this.calculatorVisorValues.symbolsValue += "";
+    this.calculatorVisorValues.userValue    = "";
+    this.calculatorVisorValues.symbolsValue = "";
   }
 
   private resetVisorValue(): void {
