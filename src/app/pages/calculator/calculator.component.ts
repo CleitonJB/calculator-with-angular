@@ -45,7 +45,7 @@ export class CalculatorComponent implements OnInit {
               //*regras
               const visorValue: string = this.calculatorVisorValues.symbolsValue;
 
-              if(visorValue.length > 0) {
+              if(visorValue.length > 0 && visorValue != "0") {
                 const expressionResult: string = this.calculate();
 
                 // Já pegou a expressão (linha acima), limpar o campo antes de inserir o resultado 
@@ -222,6 +222,8 @@ export class CalculatorComponent implements OnInit {
   }
 
   private resetVisorValue(): void {
+    if(this.calculatorVisorValues.userValue === "0") return;
+
     const fakeResetKey: AllowedKeysType = {
       type:    KeyTypes.fake,
       value:   "0",
