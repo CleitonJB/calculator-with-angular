@@ -28,6 +28,7 @@ export class CalculatorComponent implements OnInit {
       case KeyTypes.action:
         const allowedActions: AllowedKeysMappingType = {
           "C": {
+            type:    KeyTypes.action,
             value:   "",
             symbol:  "",
             perform: () => {
@@ -35,6 +36,7 @@ export class CalculatorComponent implements OnInit {
             }
           },
           "=": {
+            type:    KeyTypes.action,
             value:   "=",
             symbol:  "=",
             perform: (key) => {
@@ -48,6 +50,7 @@ export class CalculatorComponent implements OnInit {
                 this.clearVisor();
 
                 const fakeResultKey: AllowedKeysType = {
+                  type:    KeyTypes.fake,
                   value:   expressionResult,
                   symbol:  expressionResult,
                   perform: () => {},
@@ -62,27 +65,31 @@ export class CalculatorComponent implements OnInit {
         };
 
         const keyActions: AllowedKeysType = allowedActions[value];
-        keyActions.perform(keyActions);
+        keyActions.perform(keyActions); // O campo 'type' poderia ser passado aqui ao invés de ser incorporado como atributo de 'key'
       break;
 
       case KeyTypes.operation:
         const allowedOperations: AllowedKeysMappingType = {
           "+": {
+            type:    KeyTypes.operation,
             value:   "+",
             symbol:  "+",
             perform: (key) => { return this.setVisorValue(key); }
           },
           "-": {
+            type:    KeyTypes.operation,
             value:   "-",
             symbol:  "-",
             perform: (key) => { return this.setVisorValue(key); }
           },
           "x": {
+            type:    KeyTypes.operation,
             value:   "x",
             symbol:  "*",
             perform: (key) => { return this.setVisorValue(key); }
           },
           "÷": {
+            type:    KeyTypes.operation,
             value:   "÷",
             symbol:  "/",
             perform: (key) => { return this.setVisorValue(key); }
@@ -95,27 +102,31 @@ export class CalculatorComponent implements OnInit {
         };
 
         const keyOperations: AllowedKeysType = allowedOperations[value];
-        keyOperations.perform(keyOperations);
+        keyOperations.perform(keyOperations); // O campo 'type' poderia ser passado aqui ao invés de ser incorporado como atributo de 'key'
       break;
 
       case KeyTypes.symbol:
         const allowedSymbols: AllowedKeysMappingType = {
           ".": {
+            type:    KeyTypes.symbol,
             value:   ".",
             symbol:  ".",
             perform: (key) => { return this.setVisorValue(key); }
           },
           ",": {
+            type:    KeyTypes.symbol,
             value:   ",",
             symbol:  ",",
             perform: (key) => { return this.setVisorValue(key); }
           },
           "parenthesis_open": {
+            type:    KeyTypes.symbol,
             value:   "(",
             symbol:  "(",
             perform: (key) => { return this.setVisorValue(key); }
           },
           "parenthesis_close": {
+            type:    KeyTypes.symbol,
             value:   ")",
             symbol:  ")",
             perform: (key) => { return this.setVisorValue(key); }
@@ -123,57 +134,67 @@ export class CalculatorComponent implements OnInit {
         };
 
         const keySymbols: AllowedKeysType = allowedSymbols[value]
-        keySymbols.perform(keySymbols);
+        keySymbols.perform(keySymbols); // O campo 'type' poderia ser passado aqui ao invés de ser incorporado como atributo de 'key'
       break;
 
       case KeyTypes.numeral:
         const allowedNumerals: AllowedKeysMappingType = {
           0: {
+            type:    KeyTypes.numeral,
             value:   "0",
             symbol:  "0",
             perform: (key) => { return this.setVisorValue(key); }
           },
           1: {
+            type:    KeyTypes.numeral,
             value:   "1",
             symbol:  "1",
             perform: (key) => { return this.setVisorValue(key); }
           },
           2: {
+            type:    KeyTypes.numeral,
             value:   "2",
             symbol:  "2",
             perform: (key) => { return this.setVisorValue(key); }
           },
           3: {
+            type:    KeyTypes.numeral,
             value:   "3",
             symbol:  "3",
             perform: (key) => { return this.setVisorValue(key); }
           },
           4: {
+            type:    KeyTypes.numeral,
             value:   "4",
             symbol:  "4",
             perform: (key) => { return this.setVisorValue(key); }
           },
           5: {
+            type:    KeyTypes.numeral,
             value:   "5",
             symbol:  "5",
             perform: (key) => { return this.setVisorValue(key); }
           },
           6: {
+            type:    KeyTypes.numeral,
             value:   "6",
             symbol:  "6",
             perform: (key) => { return this.setVisorValue(key); }
           },
           7: {
+            type:    KeyTypes.numeral,
             value:   "7",
             symbol:  "7",
             perform: (key) => { return this.setVisorValue(key); }
           },
           8: {
+            type:    KeyTypes.numeral,
             value:   "8",
             symbol:  "8",
             perform: (key) => { return this.setVisorValue(key); }
           },
           9: {
+            type:    KeyTypes.numeral,
             value:   "9",
             symbol:  "9",
             perform: (key) => { return this.setVisorValue(key); }
@@ -181,7 +202,7 @@ export class CalculatorComponent implements OnInit {
         };
 
         const keyNumerals: AllowedKeysType = allowedNumerals[value]
-        keyNumerals.perform(keyNumerals);
+        keyNumerals.perform(keyNumerals); // O campo 'type' poderia ser passado aqui ao invés de ser incorporado como atributo de 'key'
       break;
 
       default:
@@ -193,10 +214,14 @@ export class CalculatorComponent implements OnInit {
   private clearVisor(): void {
     this.calculatorVisorValues.userValue    = "";
     this.calculatorVisorValues.symbolsValue = "";
+
+    console.log("user: ", this.calculatorVisorValues.userValue);
+    console.log("symbols: ", this.calculatorVisorValues.symbolsValue);
   }
 
   private resetVisorValue(): void {
     const fakeResetKey: AllowedKeysType = {
+      type:    KeyTypes.fake,
       value:   "0",
       symbol:  "0",
       perform: () => {},
