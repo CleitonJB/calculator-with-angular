@@ -12,7 +12,7 @@ import { AllowedKeysType, AllowedKeysMappingType } from 'src/app/models/AllowedK
 export class CalculatorComponent implements OnInit {
   public readonly KEY_TYPES: typeof KeyTypes = KeyTypes;
 
-  private calculatorVisorValues: VisorType = Object.assign({}, { userValue: '', symbolsValue: '' }) as VisorType;
+  public calculatorVisorValues: VisorType = Object.assign({}, { userValue: "", symbolsValue: "" }) as VisorType;
 
   constructor() {}
   
@@ -39,7 +39,7 @@ export class CalculatorComponent implements OnInit {
             symbol:  "=",
             perform: (key) => {
               //*regras
-              const visorValue: string = this.getVisorElement()!.value;
+              const visorValue: string = this.calculatorVisorValues.symbolsValue;
 
               if(visorValue.length > 0) {
                 const expressionResult: string = this.calculate();
@@ -191,8 +191,6 @@ export class CalculatorComponent implements OnInit {
   }
 
   private clearVisor(): void {
-    this.getVisorElement()!.value = '';
-
     this.calculatorVisorValues.userValue    = "";
     this.calculatorVisorValues.symbolsValue = "";
   }
@@ -220,36 +218,12 @@ export class CalculatorComponent implements OnInit {
     this.calculatorVisorValues.userValue    += key.value;
     this.calculatorVisorValues.symbolsValue += key.symbol;
 
-    const visorElement: HTMLElement | null = this.getVisorElement();
-
     // Limpar visor em caso de erro(s) previsto(s)
     if(this.calculatorVisorValues.symbolsValue === 'Erro de Syntaxe :/') {
       this.clearVisor();
     }
 
-    (visorElement as HTMLInputElement).value = this.calculatorVisorValues.userValue;
-
     console.log("user: ", this.calculatorVisorValues.userValue);
     console.log("symbols: ", this.calculatorVisorValues.symbolsValue);
-  }
-
-  private setToVisor(value: string): void {
-    const visorElement: HTMLElement | null = this.getVisorElement();
-
-    // Limpar visor em caso de erro(s) previsto(s)
-    if(value === 'Erro de Syntaxe :/') {
-      this.clearVisor();
-    }
-
-    (visorElement as HTMLInputElement).value += value;
-  }
-
-  private getVisorElement(): HTMLInputElement | null {
-    try {
-      return document.getElementById('calculator-visor') as HTMLInputElement;
-    } catch(error: any) {
-      console.error(`O elemento 'visor' não foi encontrado!`);
-      return null;
-    }
   }
 }

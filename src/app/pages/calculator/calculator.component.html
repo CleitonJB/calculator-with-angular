@@ -1,6 +1,6 @@
 <div class="calculator-page">
     <div class="calculator-content">
-        <input type="text" placeholder="Bem-vindo!" class="calculator-visor" id="calculator-visor">
+        <input type="text" placeholder="Bem-vindo!" class="calculator-visor" id="calculator-visor" [value]="calculatorVisorValues.userValue">
 
         <div class="row">
             <button class="calculator-key clear-button" (click)="keyPressed('C', KEY_TYPES.action)" type="button">C</button>
