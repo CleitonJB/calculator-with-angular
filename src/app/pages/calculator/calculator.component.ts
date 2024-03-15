@@ -32,6 +32,8 @@ export class CalculatorComponent implements OnInit {
             value:   "",
             symbol:  "",
             perform: () => {
+              if(this.calculatorVisorValues.userValue.length == 0) return;
+
               this.clearVisor();
             }
           },
