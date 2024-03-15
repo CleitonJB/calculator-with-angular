@@ -40,19 +40,22 @@ export class CalculatorComponent implements OnInit {
             perform: (key) => {
               //*regras
               const visorValue: string = this.getVisorElement()!.value;
-              
+
               if(visorValue.length > 0) {
                 const expressionResult: string = this.calculate();
+
+                // Já pegou a expressão (linha acima), limpar o campo antes de inserir o resultado 
                 this.clearVisor();
-                this.setToVisor(expressionResult);
 
-                this.calculatorVisorValues.userValue    = expressionResult;
-                this.calculatorVisorValues.symbolsValue = expressionResult;
+                const fakeResultKey: AllowedKeysType = {
+                  value:   expressionResult,
+                  symbol:  expressionResult,
+                  perform: () => {},
+                };
+
+                this.setVisorValue(fakeResultKey);
               } else {
-                this.calculatorVisorValues.userValue    = "";
-                this.calculatorVisorValues.symbolsValue = "";
-
-                return this.setToVisor("0");
+                this.resetVisorValue();
               }
             }
           },
@@ -194,9 +197,19 @@ export class CalculatorComponent implements OnInit {
     this.calculatorVisorValues.symbolsValue += "";
   }
 
+  private resetVisorValue(): void {
+    const fakeResetKey: AllowedKeysType = {
+      value:   "0",
+      symbol:  "0",
+      perform: () => {},
+    };
+
+    this.setVisorValue(fakeResetKey);
+  }
+
   private calculate(): string {
     try {
-      const visorValue: string = this.getVisorElement()!.value; // expression
+      const visorValue: string = this.calculatorVisorValues.symbolsValue; // expression
       return (eval(visorValue) || eval(visorValue) == 0) ? eval(visorValue) as string : 'ERROR'; // Com o tratamento do try/catch, esse treco deve ficar irrelevante
     } catch(error: any) {
       return 'Erro de sintaxe :/';
