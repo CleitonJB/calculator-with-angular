@@ -4,6 +4,8 @@ import { KeyTypes } from 'src/app/models/keyTypes';
 import { VisorType } from 'src/app/models/VisorType';
 import { AllowedKeysType, AllowedKeysMappingType } from 'src/app/models/AllowedKeysMappingType';
 
+import { HistoryService } from 'src/app/services/history/history.service';
+
 @Component({
   selector: 'app-calculator',
   templateUrl: './calculator.component.html',
@@ -14,7 +16,9 @@ export class CalculatorComponent implements OnInit {
 
   public calculatorVisorValues: VisorType = Object.assign({}, { userValue: "", symbolsValue: "" }) as VisorType;
 
-  constructor() {}
+  constructor(
+    private historyService: HistoryService
+  ) {}
   
   ngOnInit(): void {}
 
