@@ -76,25 +76,41 @@ export class CalculatorComponent implements OnInit {
             type:    KeyTypes.operation,
             value:   "+",
             symbol:  "+",
-            perform: (key) => { return this.setVisorValue(key); }
+            perform: (key) => {
+              if(this.checkDuplicateValues(key.value)) return;
+
+              return this.setVisorValue(key);
+            }
           },
           "-": {
             type:    KeyTypes.operation,
             value:   "-",
             symbol:  "-",
-            perform: (key) => { return this.setVisorValue(key); }
+            perform: (key) => {
+              if(this.checkDuplicateValues(key.value)) return;
+
+              return this.setVisorValue(key);
+            }
           },
           "x": {
             type:    KeyTypes.operation,
             value:   "x",
             symbol:  "*",
-            perform: (key) => { return this.setVisorValue(key); }
+            perform: (key) => {
+              if(this.checkDuplicateValues(key.value)) return;
+              
+              return this.setVisorValue(key);
+            }
           },
           "÷": {
             type:    KeyTypes.operation,
             value:   "÷",
             symbol:  "/",
-            perform: (key) => { return this.setVisorValue(key); }
+            perform: (key) => {
+              if(this.checkDuplicateValues(key.value)) return;
+
+              return this.setVisorValue(key);
+            }
           },
           // "!": {
           //   value:   "!",
@@ -113,25 +129,41 @@ export class CalculatorComponent implements OnInit {
             type:    KeyTypes.symbol,
             value:   ".",
             symbol:  ".",
-            perform: (key) => { return this.setVisorValue(key); }
+            perform: (key) => {
+              if(this.checkDuplicateValues(key.value)) return;
+              
+              return this.setVisorValue(key);
+            }
           },
           ",": {
             type:    KeyTypes.symbol,
             value:   ",",
             symbol:  ",",
-            perform: (key) => { return this.setVisorValue(key); }
+            perform: (key) => {
+              if(this.checkDuplicateValues(key.value)) return;
+              
+              return this.setVisorValue(key);
+            }
           },
           "parenthesis_open": {
             type:    KeyTypes.symbol,
             value:   "(",
             symbol:  "(",
-            perform: (key) => { return this.setVisorValue(key); }
+            perform: (key) => {
+              if(this.checkDuplicateValues(key.value)) return;
+              
+              return this.setVisorValue(key);
+            }
           },
           "parenthesis_close": {
             type:    KeyTypes.symbol,
             value:   ")",
             symbol:  ")",
-            perform: (key) => { return this.setVisorValue(key); }
+            perform: (key) => {
+              if(this.checkDuplicateValues(key.value)) return;
+              
+              return this.setVisorValue(key);
+            }
           }
         };
 
@@ -145,61 +177,81 @@ export class CalculatorComponent implements OnInit {
             type:    KeyTypes.numeral,
             value:   "0",
             symbol:  "0",
-            perform: (key) => { return this.setVisorValue(key); }
+            perform: (key) => {
+              return this.setVisorValue(key);
+            }
           },
           1: {
             type:    KeyTypes.numeral,
             value:   "1",
             symbol:  "1",
-            perform: (key) => { return this.setVisorValue(key); }
+            perform: (key) => {
+              return this.setVisorValue(key);
+            }
           },
           2: {
             type:    KeyTypes.numeral,
             value:   "2",
             symbol:  "2",
-            perform: (key) => { return this.setVisorValue(key); }
+            perform: (key) => {
+              return this.setVisorValue(key);
+            }
           },
           3: {
             type:    KeyTypes.numeral,
             value:   "3",
             symbol:  "3",
-            perform: (key) => { return this.setVisorValue(key); }
+            perform: (key) => {
+              return this.setVisorValue(key);
+            }
           },
           4: {
             type:    KeyTypes.numeral,
             value:   "4",
             symbol:  "4",
-            perform: (key) => { return this.setVisorValue(key); }
+            perform: (key) => {
+              return this.setVisorValue(key);
+            }
           },
           5: {
             type:    KeyTypes.numeral,
             value:   "5",
             symbol:  "5",
-            perform: (key) => { return this.setVisorValue(key); }
+            perform: (key) => {
+              return this.setVisorValue(key);
+            }
           },
           6: {
             type:    KeyTypes.numeral,
             value:   "6",
             symbol:  "6",
-            perform: (key) => { return this.setVisorValue(key); }
+            perform: (key) => {
+              return this.setVisorValue(key);
+            }
           },
           7: {
             type:    KeyTypes.numeral,
             value:   "7",
             symbol:  "7",
-            perform: (key) => { return this.setVisorValue(key); }
+            perform: (key) => {
+              return this.setVisorValue(key);
+            }
           },
           8: {
             type:    KeyTypes.numeral,
             value:   "8",
             symbol:  "8",
-            perform: (key) => { return this.setVisorValue(key); }
+            perform: (key) => {
+              return this.setVisorValue(key);
+            }
           },
           9: {
             type:    KeyTypes.numeral,
             value:   "9",
             symbol:  "9",
-            perform: (key) => { return this.setVisorValue(key); }
+            perform: (key) => {
+              return this.setVisorValue(key);
+            }
           }
         };
 
@@ -211,6 +263,12 @@ export class CalculatorComponent implements OnInit {
         throw(`Ação não permitida!`);
       break;
     }
+  }
+
+  private checkDuplicateValues(keyValue: string): boolean {
+    const visorValue: string = this.calculatorVisorValues.userValue;
+
+    return (visorValue.charAt(visorValue.length - 1) === keyValue) ? true : false;
   }
 
   private clearVisor(): void {
